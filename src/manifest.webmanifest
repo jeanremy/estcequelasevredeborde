@@ -1,0 +1,28 @@
+{
+  "name": "estcequelasevredeborde ?",
+  "short_name": "La sèvre deborde ?",
+  "description": "Une app indispensable pour savoir si on peut passer par les bords de Sèvre !",
+  "start_url": "./",
+  "lang": "fr",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#2d3e7a",
+  "background_color": "#2d3e7a",
+  "icons": [
+    {
+      "src": "/img/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/android-chrome-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/splash.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

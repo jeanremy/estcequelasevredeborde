@@ -1,0 +1,27 @@
+{
+  "name": "estcequelasevredeborde",
+  "version": "1.0.0",
+  "description": "une PWA pour savoir si la sèvre déborde",
+  "main": "index.js",
+  "repository": "https://github.com/jeanremy/estcequelasevredeborde.git",
+  "author": "JR <contact@jeanremypraud.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "yarn run dev",
+    "dev": "parcel ./src/index.html --out-dir public",
+    "build": "rm -rf public && parcel build --no-content-hash  ./src/index.html --out-dir public --no-source-maps",
+    "deploy": "now"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.10"
+  },
+  "browserslist": [
+    "since 2017-06"
+  ],
+  "dependencies": {
+    "axios": "^0.19.2",
+    "mongodb": "^3.5.9",
+    "web-push": "^3.4.4"
+  }
+}
