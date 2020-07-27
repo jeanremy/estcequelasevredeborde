@@ -13,7 +13,7 @@ const version = 1
 self.addEventListener('install', function (e) {
   e.waitUntil(
     caches.open('estcequelasevredeborde').then(function (cache) {
-      return cache.addAll(['/', '/index.html', '/styles.css'])
+      return cache.addAll(['/', '/index.html'])
     })
   )
   console.log(`Installation du service worker v${version}`)
