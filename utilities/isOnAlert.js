@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const isOnAlert = async function () {
-  let APIUrl = `http://hubeau.eaufrance.fr/api/v1/hydrometrie/observations_tr?code_entite=M750242010&grandeur_hydro=H&size=2`
+  let APIUrl = `http://hubeau.eaufrance.fr/api/v1/hydrometrie/observations_tr?code_entite=M800001010&grandeur_hydro=H&size=2`
 
   let res = await axios.get(APIUrl)
 
