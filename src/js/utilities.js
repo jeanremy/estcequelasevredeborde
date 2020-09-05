@@ -15,7 +15,7 @@ export const fetchData = () => {
   const answer = document.querySelector('.answer')
   const precision = document.querySelector('.precision')
   fetch(
-    'https://hubeau.eaufrance.fr/api/v1/hydrometrie/observations_tr?code_entite=M750242010&size=1',
+    'https://hubeau.eaufrance.fr/api/v1/hydrometrie/observations_tr?code_entite=M800001010&size=1',
     {
       method: 'GET',
     }

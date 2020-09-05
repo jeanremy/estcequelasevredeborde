@@ -10,7 +10,7 @@ Le site est hébergé par [Vercel](https://vercel.com/).
 
 Pour les notifications, les données de chaque navigateur sont anonymes et stockées dans une base [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=google&utm_campaign=gs_emea_france_search_brand_atlas_desktop&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&gclid=EAIaIQobChMInbKivaTu6gIVxfZRCh2fEAupEAAYASAAEgKuxvD_BwE).
 
-Les données de niveau de l'eau proviennent de l'[API Hubeau](http://hubeau.eaufrance.fr/api/v1/hydrometrie/observations_tr?code_entite=M750242010&size=1).
+Les données de niveau de l'eau proviennent de l'[API Hubeau](http://hubeau.eaufrance.fr/api/v1/hydrometrie/observations_tr?code_entite=M800001010&size=1).
 
 Les critères pour que le chemin soit recouvert sont:
 
