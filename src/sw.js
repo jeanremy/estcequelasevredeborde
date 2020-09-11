@@ -26,14 +26,6 @@ self.addEventListener('activate', function (event) {
   console.log(`Activation du service worker v${version}`)
 })
 
-self.addEventListener('fetch', function (event) {
-  event.respondWith(
-    caches.match(event.request).then(function (response) {
-      return response || fetch(event.request)
-    })
-  )
-})
-
 self.addEventListener('push', function (event) {
   console.log('[Service Worker] Push Received.')
   const data = event.data.json()
@@ -43,7 +35,6 @@ self.addEventListener('push', function (event) {
     icon,
     badge,
   }
-  console.log('options', options)
 
   event.waitUntil(self.registration.showNotification(title, options))
 })
@@ -53,12 +44,13 @@ self.addEventListener('notificationclick', function (event) {
 
   event.notification.close()
 
-  event.waitUntil(clients.openWindow('/'))
+  event.waitUntil(
+    clients.openWindow('https://estcequelasevredeborde.vercel.app/')
+  )
 })
 
-self.addEventListener('pushsubscriptionchange', function (event) {
+self.addEventListener('pushsubscriptionchange', async function (event) {
   console.log("[Service Worker]: 'pushsubscriptionchange' event fired.")
-  unsubscribeOnServer(event.oldSubscription)
   const applicationServerKey = urlBase64ToUint8Array(applicationServerPublicKey)
   event.waitUntil(
     self.registration.pushManager
@@ -66,10 +58,13 @@ self.addEventListener('pushsubscriptionchange', function (event) {
         userVisibleOnly: true,
         applicationServerKey: applicationServerKey,
       })
-      .then(function (newSubscription) {
-        // TODO: Send to application server
-        subscribeOnServer(newSubscription)
-        console.log('[Service Worker] New subscription: ', newSubscription)
+      .then(async (newSubscription) => {
+        console.log('newSubscription', newSubscription)
+        try {
+          subscribeOnServer(newSubscription)
+        } catch (err) {
+          console.log(err)
+        }
       })
   )
 })
