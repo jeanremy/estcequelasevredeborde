@@ -26,6 +26,7 @@ export const fetchData = () => {
     .then((res) => {
       if (res.data[0].resultat_obs > process.env.MAX_HEIGHT) {
         answer.textContent = 'Oui.'
+        document.body.classList.add('yes')
         precision.remove()
       } else {
         answer.textContent = 'Non.'
