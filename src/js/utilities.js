@@ -43,7 +43,7 @@ export const subscribeOnServer = async (subscription) => {
   unsubscribeOnServer()
   try {
     await set('subscription', JSON.stringify(subscription))
-    saveToServer('subscribe', subscription)
+    await saveToServer('subscribe', subscription)
   } catch (err) {
     console.error(err)
   }
@@ -53,7 +53,7 @@ export const unsubscribeOnServer = async () => {
   const oldSubscription = JSON.parse(await get('subscription'))
   try {
     if (oldSubscription) {
-      saveToServer('unsubscribe', oldSubscription)
+      await saveToServer('unsubscribe', oldSubscription)
     }
   } catch (err) {
     console.error(err)

@@ -12,7 +12,7 @@ const isOnAlert = async function () {
   ) {
     return { message: 'La sèvre déborde !' }
   } else if (
-    results[0].resultat_obs <= process.env.MAX_HEIGHT &&
+    results[0].resultat_obs < process.env.MAX_HEIGHT &&
     results[1].resultat_obs >= process.env.MAX_HEIGHT
   ) {
     return { message: 'La sèvre ne déborde plus' }

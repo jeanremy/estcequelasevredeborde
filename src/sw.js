@@ -1,14 +1,9 @@
-import {
-  urlBase64ToUint8Array,
-  subscribeOnServer,
-  unsubscribeOnServer,
-} from './js/utilities'
+import { urlBase64ToUint8Array, subscribeOnServer } from './js/utilities'
 import icon from './img/icon.png'
 import badge from './img/badge.png'
 require('dotenv').config()
 
 const applicationServerPublicKey = process.env.VAPID_PUBLIC_KEY
-const version = 1
 
 self.addEventListener('install', function (e) {
   e.waitUntil(
@@ -16,18 +11,14 @@ self.addEventListener('install', function (e) {
       return cache.addAll(['/', '/index.html'])
     })
   )
-  console.log(`Installation du service worker v${version}`)
-
   return self.skipWaiting()
 })
 
 self.addEventListener('activate', function (event) {
   event.waitUntil(self.clients.claim())
-  console.log(`Activation du service worker v${version}`)
 })
 
 self.addEventListener('push', function (event) {
-  console.log('[Service Worker] Push Received.')
   const data = event.data.json()
   const title = 'Alerte Sèvre'
   const options = {
@@ -40,8 +31,6 @@ self.addEventListener('push', function (event) {
 })
 
 self.addEventListener('notificationclick', function (event) {
-  console.log('[Service Worker] Notification click Received.')
-
   event.notification.close()
 
   event.waitUntil(
