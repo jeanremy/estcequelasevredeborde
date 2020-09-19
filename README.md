@@ -14,7 +14,7 @@ Les données de niveau de l'eau proviennent de l'[API Hubeau](http://hubeau.eauf
 
 Les critères pour que le chemin soit recouvert sont:
 
-- que la [Loire dépasse 6400mm](https://www.vigicrues.gouv.fr/niv3-station.php?CdEntVigiCru=9&CdStationHydro=M800001010&GrdSerie=H&ZoomInitial=3)
+- que la [Loire dépasse 6800mm](https://www.vigicrues.gouv.fr/niv3-station.php?CdEntVigiCru=9&CdStationHydro=M800001010&GrdSerie=H&ZoomInitial=3)
 - que l'écluse soit ouverte. Elle l'est [une heure avant et après la marée haute](https://www.ports-nantes.fr/wp-content/uploads/2016/03/AvisUsagersSevre.pdf).
 
 Pour le moment, les marées ne sont pas vérifiées, car la hauteur maxi n'est jamais dépassée en dehors du créaneau d'ouverture de l'écluse (a vérifier).
