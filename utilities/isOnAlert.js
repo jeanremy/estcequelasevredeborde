@@ -1,23 +1,25 @@
 import axios from 'axios'
 
 const isOnAlert = async function () {
-  let APIUrl = `http://hubeau.eaufrance.fr/api/v1/hydrometrie/observations_tr?code_entite=M800001010&grandeur_hydro=H&size=2`
+  let APIUrl =
+    'https://www.vigicrues.gouv.fr/services/previsions.json?CdStationHydro=M800001010'
+  const res = await axios.get(APIUrl)
+  const previs = res.data.Simul.Prevs
 
-  let res = await axios.get(APIUrl)
+  if (previs.length > 0) {
+    // Si la prévision moyenne ne dépasse pas la hauteur, on file
+    if (previs[0].ResMoyPrev < process.env.MAX_HEIGHT / 1000) return false
 
-  let results = res.data.data
-  if (
-    results[0].resultat_obs >= process.env.MAX_HEIGHT &&
-    results[1].resultat_obs < process.env.MAX_HEIGHT
-  ) {
-    return { message: 'La sèvre déborde !' }
-  } else if (
-    results[0].resultat_obs < process.env.MAX_HEIGHT &&
-    results[1].resultat_obs >= process.env.MAX_HEIGHT
-  ) {
-    return { message: 'La sèvre ne déborde plus' }
+    // Si la prévision est dans un creneau d'une heure
+    const now = new Date()
+    const nowPlusOneHour = now.setTime(now.getTime() + 60 * 60 * 1000)
+    const previsDate = new Date(previs[0].DtPrev)
+
+    if (nowPlusOneHour.getTime() > previsDate && now.getTime() < previsDate) {
+      return { message: 'La sèvre devrait déborder' }
+    }
+    return false
   }
-
   return false
 }
 
