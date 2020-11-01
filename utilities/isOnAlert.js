@@ -15,7 +15,7 @@ const isOnAlert = async function () {
     const nowPlusOneHour = now.setTime(now.getTime() + 60 * 60 * 1000)
     const previsDate = new Date(previs[0].DtPrev)
 
-    if (nowPlusOneHour.getTime() > previsDate && now.getTime() < previsDate) {
+    if (nowPlusOneHour > previsDate && now.getTime() < previsDate) {
       return { message: 'La sèvre devrait déborder' }
     }
     return false
