@@ -12,10 +12,13 @@ const isOnAlert = async function () {
 
     // Si la prévision est dans un creneau d'une heure
     const now = new Date()
-    const nowPlusOneHour = now.setTime(now.getTime() + 60 * 60 * 1000)
+
+    let nowPlusOneHour = new Date()
+    nowPlusOneHour.setTime(nowPlusOneHour.getTime() + 60 * 60 * 1000)
+
     const previsDate = new Date(previs[0].DtPrev)
 
-    if (nowPlusOneHour > previsDate && now.getTime() < previsDate) {
+    if (nowPlusOneHour > previsDate && now.getTime() < previsDate.getTime()) {
       return { message: 'La sèvre devrait déborder' }
     }
     return false
