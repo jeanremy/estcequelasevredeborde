@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const isOnAlert = async function () {
   let APIUrl =
-    'https://www.vigicrues.gouv.fr/services/previsions.json?CdStationHydro=M800001010'
+    'https://www.vigicrues.gouv.fr/services/previsions.json/index.php?CdStationHydro=M800001010'
   const res = await axios.get(APIUrl)
   const previs = res.data.Simul.Prevs
 
